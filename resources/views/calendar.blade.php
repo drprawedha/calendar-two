@@ -25,7 +25,7 @@ margin:40px auto;
 
 <h2 class="text-center mb-4">📅 Kalender Manajemen</h2>
 
-<a href="/download" class="btn btn-success mb-3">Download CSV</a>
+<a href="{{ url('download') }}" class="btn btn-success mb-3">Download CSV</a>
 
 <input
 type="text"
@@ -45,7 +45,7 @@ placeholder="Cari nama event..."
 <div class="modal-dialog">
 <div class="modal-content">
 
-<form method="POST" action="/event">
+<form method="POST" action="{{ url('event') }}">
 @csrf
 
 <div class="modal-header">
@@ -174,7 +174,7 @@ document.getElementById('edit_tanggal').value = event.startStr;
 document.getElementById('edit_judul').value = event.title;
 document.getElementById('edit_deskripsi').value = event.extendedProps.deskripsi;
 
-document.getElementById('editForm').action = "/event/update/" + event.id;
+document.getElementById('editForm').action = "/events-calendar/event/update/" + event.id;
 document.getElementById('delete_id').value = event.id;
 
 new bootstrap.Modal(document.getElementById('editModal')).show();
@@ -208,7 +208,8 @@ var id = document.getElementById("delete_id").value;
 
 if(confirm("Yakin hapus event?")){
 
-fetch("/event/delete/" + id, {
+
+fetch("/events-calendar/event/delete/" + id, {
 method: "POST",
 headers: {
 "X-CSRF-TOKEN": "{{ csrf_token() }}",

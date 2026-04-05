@@ -8,3 +8,5 @@ Route::post('/event',[EventController::class,'store']);
 Route::put('/event/update/{id}',[EventController::class,'update']);
 Route::get('/download',[EventController::class,'download']);
 Route::delete('/event/delete/{id}', [EventController::class, 'destroy']);
+
+
